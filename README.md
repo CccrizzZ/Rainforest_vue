@@ -1,6 +1,6 @@
-# rainforest
+# Rainforest
 
-> Canabis growing planner
+> Canabis cultivation monitor/planner build with electron-vue
 
 #### Build Setup
 
