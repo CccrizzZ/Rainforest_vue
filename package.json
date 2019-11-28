@@ -1,8 +1,8 @@
 {
-  "name": "electron-vue",
+  "name": "rainforest",
   "version": "0.0.1",
   "author": "CccrizzZ <ccccrizzzz@gmail.com>",
-  "description": "Cannabis monitor build with electron-vue",
+  "description": "Canabis growing planner",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -11,14 +11,16 @@
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
     "dev": "node .electron-vue/dev-runner.js",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": ""
+    "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "Greenthumb",
-    "appId": "com.Greenthumb.app",
+    "productName": "rainforest",
+    "appId": "com.rainforest.io",
     "directories": {
       "output": "build"
     },
@@ -52,8 +54,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.28",
+    "bootstrap": "^4.4.0",
+    "bootstrap-vue": "^2.1.0",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6",
@@ -81,6 +83,11 @@
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-builder": "^20.19.2",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.3",
     "mini-css-extract-plugin": "0.4.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
