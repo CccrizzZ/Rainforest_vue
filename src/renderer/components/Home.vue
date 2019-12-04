@@ -3,6 +3,7 @@
     <h4 style="text-align:center;">{{ currtime }}</h4>
     <plantsCard v-bind:plants="plants" />
     
+    
   </div>
 
 
