@@ -1,9 +1,8 @@
 <template>
   <div>
-    <!-- Image and text -->
     <b-navbar variant="dark" type="dark" class="navbar1">
       <b-navbar-brand tag="h1" style="text-align:center; margin:auto;">
-        Cultivation Monitor
+        Rainforest Manager
       </b-navbar-brand>
     </b-navbar>
   </div>

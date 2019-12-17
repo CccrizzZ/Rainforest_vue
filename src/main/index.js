@@ -18,12 +18,17 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
+    height: 500,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    cente: true,
   })
 
   mainWindow.loadURL(winURL)
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.setTitle("Rainforest Manager");
+  })
 
   mainWindow.on('closed', () => {
     mainWindow = null

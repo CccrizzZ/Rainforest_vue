@@ -1,7 +1,10 @@
 <template>
   <div class="container" style="margin-top:10px;">
     <h4 style="text-align:center;">{{ currtime }}</h4>
-    <plantsCard v-bind:plants="plants" />
+        
+    
+    
+    <plantsCard v-bind:plants="MyPlantsDB" />
     
     
   </div>
@@ -22,11 +25,15 @@ export default {
   data(){
     return{
       currtime: moment().format('MMMM Do YYYY, h:mm:ss a'),
-      plants:[
-        {name: "OG kush", dominant: "Indica", fTime: "8 weeks"},
-        {name: "Blueberry", dominant: "Indica", fTime: "7 weeks"},
-        {name: "Jack Herer", dominant: "Sativa", fTime: "7 weeks"},
-        {name: "Blue Cheese", dominant: "Indica", fTime: "7 weeks"}
+      MyPlantsDB:[
+        {name: "OG kush", dominant: "Indica", CurrentTime: "Week 7"},
+        {name: "Blueberry", dominant: "Indica", CurrentTime: "Week 8"},
+        {name: "Jack Herer", dominant: "Sativa", CurrentTime: "Week 7"},
+        {name: "Blue Cheese", dominant: "Indica", CurrentTime: "Week 8"},
+        {name: "Blue Berry", dominant: "Indica", CurrentTime: "Week 9"},
+        {name: "Blue Berry Cheese", dominant: "Indica", CurrentTime: "Week 9"},
+        {name: "Blue Berry Cream", dominant: "Indica", CurrentTime: "Week 9"},
+
       ]
     }
   },
