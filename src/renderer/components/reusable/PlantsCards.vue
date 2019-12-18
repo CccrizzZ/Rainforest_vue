@@ -9,10 +9,10 @@
       <b-card-text>{{plant.dominant}}</b-card-text>
 
       <!-- Edit Button -->
-      <b-button variant="success" v-b-modal.EditModal>Edit</b-button>
+      <b-button variant="success" v-b-modal="plant.name">Edit</b-button>
       
       <!-- Modal -->
-      <b-modal id="EditModal" title="Edit Plant">
+      <b-modal :id="plant.name" title="Edit Plant">
         <p class="my-1">{{plant.name}}</p>
       </b-modal>
 
@@ -26,7 +26,12 @@
 <script>
   export default {
     name: "plantsCard",
-    props: ['plants']
+    props: ['plants'],
+    data(){
+      return{
+
+      }
+    }
   }
 </script>
 
