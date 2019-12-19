@@ -11,9 +11,9 @@
       <!-- Edit Button -->
       <b-button variant="success" v-b-modal="plant.name">Edit</b-button>
       
-      <!-- Modal -->
+      <!-- Editor Modal -->
       <b-modal :id="plant.name" title="Edit Plant">
-        <p class="my-1">{{plant.name}}</p>
+        <h2 class="my-1">{{plant.name}}</h2>
       </b-modal>
 
       <!-- Current Week -->
