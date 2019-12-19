@@ -58,6 +58,7 @@
     "bootstrap-vue": "^2.1.0",
     "electron-db": "^0.15.3",
     "jquery": "^3.4.0",
+    "lodash.merge": "^4.6.2",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6",

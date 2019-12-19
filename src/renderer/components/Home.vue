@@ -54,29 +54,38 @@ export default {
     }
   },
   mounted() {
+    // turn on the clock
     setInterval(function(){
       this.currtime = moment().format('MMMM Do YYYY, h:mm:ss a')
     }.bind(this), 1000)
 
+
+
+    // Creating the table
+    db.createTable("plantsDB", location, (succ, msg) =>{
+        // bool succ = tells if call is successful
+        // string msg = debugging message
+        console.log("DB Creation Success: " + succ)
+        console.log("DB Message: " + msg)
+    })
+  
+
+    // if this DB exist at this specific location
+    if (db.valid("plantsDB", location)) {
     
-    if (!db.valid('plantsDB')) {
-      db.createTable("plantsDB", location, (succ, msg) =>{
-          // bool succ = tells if call is successful
-          console.log("Success: " + succ)
-          console.log("Message: " + msg)
-      })
-    }else{
+      // create new plant object
       let obj = new Object()
       obj.Pname = "OG kush"
       obj.dominant = "Hybraid"
       obj.CurrWeek = "Week 7"
-
-      db.insertTableContent("plantsDB", obj, (succ, msg) => {
-          console.log("Success: " + succ)
-          console.log("Message: " + msg)
+      
+      // insert it into table (plantsDB)
+      db.insertTableContent("plantsDB", location, obj, (succ, msg) => {
+          console.log("Insertion Success: " + succ)
+          console.log("Insertion Message: " + msg)
       })
     }
-
+ 
   }
 }
 
