@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="margin-top:10px;">
-    <h4 style="text-align:center;">{{ currtime }}</h4>
+    <h4 style="text-align:center; color:#ffffff;">{{ currtime }}</h4>
         
     
     
@@ -70,21 +70,21 @@ export default {
     })
   
 
-    // if this DB exist at this specific location
-    if (db.valid("plantsDB", location)) {
+    // // if this DB exist at this specific location
+    // if (db.valid("plantsDB", location)) {
     
-      // create new plant object
-      let obj = new Object()
-      obj.Pname = "OG kush"
-      obj.dominant = "Hybraid"
-      obj.CurrWeek = "Week 7"
+    //   // create new plant object
+    //   let obj = new Object()
+    //   obj.Pname = "OG kush"
+    //   obj.dominant = "Hybraid"
+    //   obj.CurrWeek = "Week 7"
       
-      // insert it into table (plantsDB)
-      db.insertTableContent("plantsDB", location, obj, (succ, msg) => {
-          console.log("Insertion Success: " + succ)
-          console.log("Insertion Message: " + msg)
-      })
-    }
+    //   // insert it into table (plantsDB)
+    //   db.insertTableContent("plantsDB", location, obj, (succ, msg) => {
+    //       console.log("Insertion Success: " + succ)
+    //       console.log("Insertion Message: " + msg)
+    //   })
+    // }
  
   }
 }
