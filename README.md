@@ -10,7 +10,7 @@
                  ░           ░  ░ ░           ░            ░ ░     ░        ░  ░      ░           
                                                                                     
 ```
-> Canabis cultivation monitor/planner build with electron-vue
+> Canabis / Psilocybin mushroom cultivation monitor/planner build with electron-vue
 
 #### Build Setup
 
