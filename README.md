@@ -1,5 +1,5 @@
 ﻿``` bash
-![In development...](https://github.com/CccrizzZ/Rainforest/src/renderer/shot.png)
+![In development](src/renderer/asset/BG.png?raw=true "In development")
 ```
 > Canabis cultivation monitor/planner build with electron-vue
 
