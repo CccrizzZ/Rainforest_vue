@@ -1,14 +1,14 @@
 <template>
-  <div class="container" style="margin-top:10px;">
-    <h4 style="text-align:center; color:#ffffff;">{{ currtime }}</h4>
+<div style="background-image:url('src/renderer/assets/BG.png');">
+  <div class="container">
+    <h4 style="text-align:center; color:#ffffff; padding-top:10px; margin-bottom:10px;">{{ currtime }}</h4>
+    <hr>
         
     
     
     <plantsCard v-bind:plants="MyPlantsDB" />
-    
-    
   </div>
-
+</div>
 
 </template>
 

@@ -28,7 +28,7 @@ function createWindow () {
   mainWindow.loadURL(winURL)
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.setTitle("Rainforest Manager");
+    mainWindow.setTitle("Rainforest");
   })
 
   mainWindow.on('closed', () => {
