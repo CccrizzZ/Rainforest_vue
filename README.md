@@ -6,6 +6,8 @@
 #### Build Setup
 
 ``` bash
+# cd to folder
+
 # install dependencies
 npm install
 
