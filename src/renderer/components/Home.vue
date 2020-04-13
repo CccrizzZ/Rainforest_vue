@@ -13,11 +13,17 @@
 </template>
 
 <script>
+
+// three.js
+import * as THREE from 'three'
+// moment.js
 import moment from 'moment';
 import { setInterval } from 'timers';
 import plantsCard from './reusable/PlantsCards';
 import db from 'electron-db';
 import path from 'path';
+
+// path to database file
 const location = path.join(__dirname, '')
 
 export default {
@@ -54,6 +60,7 @@ export default {
     }
   },
   mounted() {
+
     // turn on the clock
     setInterval(function(){
       this.currtime = moment().format('MMMM Do YYYY, h:mm:ss a')
@@ -61,21 +68,23 @@ export default {
 
 
 
-    // Creating the table
-    db.createTable("plantsDB", location, (succ, msg) =>{
-        // bool succ = tells if call is successful
-        // string msg = debugging message
-        console.log("DB Creation Success: " + succ)
-        console.log("DB Message: " + msg)
-    })
+
     
     if (db.valid("plantsDB", location)) {
+      // Get all plants from database
       db.getAll("plantsDB", location, (succ, data) => {
         this.MyPlantsDB = data
         console.log(data);
         
       })
-      
+    }else{
+      // Creating the table
+      db.createTable("plantsDB", location, (succ, msg) =>{
+          // bool succ = tells if call is successful
+          // string msg = debugging message
+          console.log("DB Creation Success: " + succ)
+          console.log("DB Message: " + msg)
+      })
     }
 
     // // if this DB exist at this specific location
@@ -100,5 +109,14 @@ export default {
 </script>
 
 <style>
+
+
+
+
+
+
+
+
+
 
 </style>
