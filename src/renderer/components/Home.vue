@@ -1,15 +1,14 @@
 <template>
-<div style="background-image:url('src/renderer/assets/BG.png');">
-  <div class="container">
-    <h4 style="text-align:center; color:#ffffff; padding-top:10px; margin-bottom:10px;">{{ currtime }}</h4>
-    <hr>
-        
-    
-    
-    <plantsCard v-bind:plants="MyPlantsDB" />
+  <div style="background-image:url('src/renderer/assets/BG.png');">
+    <div class="container">
+      <h4 style="text-align:center; color:#ffffff; padding-top:10px; margin-bottom:10px;">{{ currtime }}</h4>
+      <hr>
+          
+      
+      
+      <plantsCard v-bind:plants="MyPlantsDB" />
+    </div>
   </div>
-</div>
-
 </template>
 
 <script>
@@ -18,9 +17,10 @@
 import * as THREE from 'three'
 // moment.js
 import moment from 'moment';
+// electron-db
+import db from 'electron-db';
 import { setInterval } from 'timers';
 import plantsCard from './reusable/PlantsCards';
-import db from 'electron-db';
 import path from 'path';
 
 // path to database file
@@ -61,20 +61,29 @@ export default {
   },
   mounted() {
 
+
     // turn on the clock
     setInterval(function(){
       this.currtime = moment().format('MMMM Do YYYY, h:mm:ss a')
     }.bind(this), 1000)
 
+    // init();
+    // animate();
 
 
 
-    
+
+    // If db valid load data, else create db
     if (db.valid("plantsDB", location)) {
       // Get all plants from database
       db.getAll("plantsDB", location, (succ, data) => {
+        // Load all datas
         this.MyPlantsDB = data
+        console.log("Plants Data Loaded From DB!");
+        
         console.log(data);
+        
+
         
       })
     }else{
@@ -82,7 +91,7 @@ export default {
       db.createTable("plantsDB", location, (succ, msg) =>{
           // bool succ = tells if call is successful
           // string msg = debugging message
-          console.log("DB Creation Success: " + succ)
+          console.log("DB Creation Success!  " + succ)
           console.log("DB Message: " + msg)
       })
     }
@@ -105,7 +114,38 @@ export default {
  
   }
 }
-
+ 
+// var camera, scene, renderer;
+// var geometry, material, mesh;
+// function init() {
+ 
+//     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+//     camera.position.z = 1;
+ 
+//     scene = new THREE.Scene();
+ 
+//     geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
+//     material = new THREE.MeshNormalMaterial();
+ 
+//     mesh = new THREE.Mesh( geometry, material );
+//     scene.add( mesh );
+ 
+//     renderer = new THREE.WebGLRenderer( { antialias: true } );
+//     renderer.setSize( window.innerWidth, window.innerHeight );
+//     document.body.appendChild( renderer.domElement );
+ 
+// }
+ 
+// function animate() {
+ 
+//     requestAnimationFrame( animate );
+ 
+//     mesh.rotation.x += 0.01;
+//     mesh.rotation.y += 0.02;
+ 
+//     renderer.render( scene, camera );
+ 
+// }
 </script>
 
 <style>
