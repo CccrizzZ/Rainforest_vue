@@ -8,36 +8,22 @@
       <!-- Card Subtitle -->
       <b-card-text>{{plant.dominant}}</b-card-text>
 
-      <!-- Edit Button -->
-      <b-button variant="light" v-b-modal="plant.id">Edit</b-button>
+
       
-      <!-- Editor Modal -->
-      <b-modal ref="EditModal" id="plant.id" title="Edit Plant" hide-footer>
-        <h2 class="my-1">{{plant.Pname}}</h2>
-        <hr>
-        <b-button variant="light" @click="hideModal">Cancel</b-button>
-        <b-button variant="success" @click="saveModal">Save</b-button>
-      </b-modal>
+
 
       <!-- Current Week -->
-      <em slot="footer">{{plant.CurrWeek}}</em>
+      <em>{{plant.CurrWeek}}</em>
 
+      <!-- Edit Button -->
+      <b-button pill slot="footer" style="right:5px;" variant="light" v-b-modal="plant.id">Edit</b-button>
     </b-card>
   </b-card-group>
 </template>
 
 <script>
   export default {
-    methods:{
-      hideModal(){
-        this.$refs["EditModal"].hide()
 
-      },
-      saveModal(){
-        this.$refs['EditModal'].hide()
-        
-      }
-    },
     name: "plantsCard",
     props: ['plants'],
   }
