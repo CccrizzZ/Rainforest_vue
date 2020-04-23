@@ -1,6 +1,5 @@
-
+# Rainforest
 [![npm](https://img.shields.io/npm/l/@xmcl/core.svg)](https://github.com/CccrizzZ/Rainforest/blob/master/LICENSE)
-![In development](https://github.com/CccrizzZ/Rainforest/blob/master/src/renderer/assets/shot.png)
 
 > Canabis cultivation monitor/planner build with electron-vue
 
@@ -23,6 +22,7 @@ npm run build
 npm run lint
 
 ```
+![In development](https://github.com/CccrizzZ/Rainforest/blob/master/src/renderer/assets/shot.png)
 
 ---
 
