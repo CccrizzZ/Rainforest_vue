@@ -1,7 +1,7 @@
 # Rainforest
 [![mit](https://img.shields.io/npm/l/@xmcl/core.svg)](https://github.com/CccrizzZ/Rainforest/blob/master/LICENSE)
-[![issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://GitHub.com/CccrizzZ/Rainforest/issues/)
-[![size](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://github.com/CccrizzZ/Rainforest)
+[![issues](https://img.shields.io/github/issues/CccrizzZ/Rainforest)](https://GitHub.com/CccrizzZ/Rainforest/issues/)
+[![size](https://badge-size.herokuapp.com/CccrizzZ/Rainforest)](https://github.com/CccrizzZ/Rainforest)
 ![vue](https://erguotou520.github.io/vue-version-badge/vue2.x.svg)
 
 > Canabis cultivation monitor/planner build with electron-vue
