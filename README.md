@@ -1,7 +1,7 @@
 # Rainforest
 [![mit](https://img.shields.io/npm/l/@xmcl/core.svg)](https://github.com/CccrizzZ/Rainforest/blob/master/LICENSE) ![](https://erguotou520.github.io/vue-version-badge/vue2.x.svg)
 
-> Canabis cultivation monitor/planner build with electron-vue
+> Desktop canabis cultivation monitor/planner build with electron-vue
 
 #### Build Setup
 
