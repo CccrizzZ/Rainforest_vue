@@ -1,9 +1,9 @@
 {
   "name": "rainforest",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "CccrizzZ <ccccrizzzz@gmail.com>",
-  "description": "Canabis growers helper",
-  "license": null,
+  "description": "Canabis Cultivation Monitor",
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -55,7 +55,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.11.0",
+    "bootstrap-vue": "^2.12.0",
+    "ecstatic": "^4.1.4",
     "electron-db": "^0.15.4",
     "jquery": "^3.5.0",
     "lodash.merge": "^4.6.2",
@@ -64,11 +65,11 @@
     "vue": "^2.6.11",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.1.6",
-    "vuex": "^3.1.3",
+    "vuex": "^3.2.0",
     "vuex-electron": "^1.0.0"
   },
   "devDependencies": {
-    "ajv": "^6.12.0",
+    "ajv": "^6.12.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
@@ -105,7 +106,7 @@
     "vue-loader": "^15.9.1",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.42.1",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-hot-middleware": "^2.22.2",

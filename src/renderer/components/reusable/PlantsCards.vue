@@ -9,7 +9,6 @@
       <b-card-text>{{plant.dominant}}</b-card-text>
 
 
-      
 
 
       <!-- Current Week -->
@@ -25,7 +24,7 @@
   export default {
 
     name: "plantsCard",
-    props: ['plants'],
+    props: ['plants']
   }
 </script>
 
