@@ -19,10 +19,11 @@ function createWindow () {
    */
   mainWindow = new BrowserWindow({
     useContentSize: true,
-    height: 500,
-    width: 1000,
+    height: 800,
+    width: 500,
     center: true,
-    frame: true
+    frame: true,
+    icon: __dirname + '../renderer/assets/logo.png'
   })
 
   mainWindow.loadURL(winURL)
