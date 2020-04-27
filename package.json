@@ -53,6 +53,8 @@
     }
   },
   "dependencies": {
+    "@types/node": "^13.13.4",
+    "@web-types/bootstrap-vue": "^2.0.0-1",
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.12.0",

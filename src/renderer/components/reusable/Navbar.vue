@@ -7,31 +7,26 @@
       </b-navbar-brand>
 
       <b-button pill v-b-toggle.collapse-time variant="primary" style="margin-right: 10px;" class="ml-auto" id="ShowTime">Show Time</b-button>
+
       <b-tooltip target="ShowTime" triggers="hover">
         Toggle <b>current time</b> bar 
       </b-tooltip>
-      <b-button pill v-b-modal.modal-xl variant="success" id="AddNewPlant">Add New Plant</b-button>
+
+      <b-button pill v-b-modal.modal-xl-addplant variant="success" id="AddNewPlant">Add New Plant</b-button>
+
       <b-tooltip target="AddNewPlant" triggers="hover">
         Add a <b>new plant</b> to the tray
       </b-tooltip>
-      <b-modal id="modal-xl" no-close-on-backdrop centered scrollable no-close-on-esc title="New Plant" ok-title="Add" ok-variant="success" cancel-variant="dark" @ok="makeToast('warning')">
-         <div>
-          <b-form @submit="onSubmit">
-            <b-form-group
-              id="input-group-1"
-              label="Plant name:"
-              label-for="input-1"
-              description="Enter your plant name here."
-            >
-              <b-form-input
-                id="input-1"
-                v-model="NewPlantForm.PlantName"
-                required
-                placeholder="Enter plant name"
-              ></b-form-input>
-            </b-form-group>
 
-          <b-button type="submit" variant="primary">Submit</b-button>
+      <b-modal id="modal-xl-addplant" ref="modal-xl-addplant" no-close-on-backdrop centered scrollable hide-footer no-close-on-esc title="New Plant">
+        <div>
+          <b-form @submit="onSubmit(); makeToast('warning')" @reset="onReset()">
+            <b-form-group id="input-group-1" label="Plant name:" label-for="input-1"  description="Enter your plant name here.">
+              <b-form-input  id="input-1" v-model="NewPlantForm.PlantName" required placeholder="Enter plant name" ></b-form-input>
+            </b-form-group>
+          
+            <b-button type="reset" variant="dark">Reset</b-button>
+            <b-button type="submit" variant="success" >Submit</b-button>
           </b-form>
         </div>
 
@@ -45,18 +40,28 @@
 </template>
 
 <script>
+
+  // electron-db
+  import db from 'electron-db';
   // moment.js
   import moment from 'moment';
+  import path from 'path';
+  import { log } from 'util';
+
+  // path to database file
+  const location = path.join(__dirname, '')
 
   export default {
     name: "navbars",
     data(){
       return{
         currtime: moment().format('MMMM Do YYYY, h:mm:ss a'),
-
+        ShowModal: true,
         NewPlantForm: {
-          PlantName:'',
-          PlantString:''
+          PlantName: '',
+          PlantDominant: '',
+          PlantGermDate: 0,
+          PlantGender:''
         }
       }
     },
@@ -70,13 +75,52 @@
           autoHideDelay: 2000,
         })
       },
-      onSubmit(evt){
-        evt.preventDefault()
+      onSubmit(){
         console.log(this.NewPlantForm.PlantName);
+        
+        if (db.valid("../plantsDB", location)) {
+          console.log(1000);
+          
+          // create new plant object
+          let obj = new Object()
+          obj.Pname = this.NewPlantForm.PlantName
+          obj.dominant = this.NewPlantForm.PlantDominant
+          // obj.CurrWeek = this.NewPlantForm.PlantDominant
+
+          // insert it into table (plantsDB)
+          db.insertTableContent("../plantsDB", location, obj, (succ, msg) => {
+              console.log("Insertion Success: " + succ)
+              console.log("Insertion Message: " + msg)
+          })
+        }
+
+
+
+
+
+
+        this.NewPlantForm.PlantName = ''
+        this.NewPlantForm.PlantDominant = ''
+        this.NewPlantForm.PlantGermDate = null
+        this.NewPlantForm.PlantGender = ''
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+        this.$refs["modal-xl-addplant"].hide()
         
       },
       onReset(){
-
+        this.NewPlantForm.PlantName = ''
+        this.NewPlantForm.PlantDominant = ''
+        this.NewPlantForm.PlantGermDate = null
+        this.NewPlantForm.PlantGender = ''
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
       }
     },
     mounted(){
@@ -87,6 +131,7 @@
 
 
     }
+    
   }
 </script>
 
