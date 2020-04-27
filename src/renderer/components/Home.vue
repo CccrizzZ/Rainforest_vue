@@ -1,6 +1,8 @@
 <template>
+
   <div style="background-image:url('src/renderer/assets/BG.png');">
-    <div class="container">
+    <navbars @refresh="refresh"/>
+    <div class="container" style="padding-top: 0px;">
       
       <div style="padding-top:10px; margin-bottom:10px;"></div>
       <hr>
@@ -13,6 +15,7 @@
 
 <script>
 
+  import navbars from './reusable/Navbar';
 
   // electron-db
   import db from 'electron-db';
@@ -28,33 +31,14 @@
   export default {
 
     components:{
-      plantsCards
+      plantsCards,
+      navbars
     },
     data(){
       return{
         currtime: moment().format('MMMM Do YYYY, h:mm:ss a'),
         MyPlantsDB:[
-          // {name: "OG kush", dominant: "Indica", CurrentTime: "Week 7"},
-          // {name: "Blueberry", dominant: "Indica", CurrentTime: "Week 8"},
-          // {name: "Jack Herer", dominant: "Sativa", CurrentTime: "Week 7"},
-          // {name: "Blue Cheese", dominant: "Indica", CurrentTime: "Week 8"},
-          // {name: "Blue Berry", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cheese", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream1", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream2", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream3", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream4", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream5", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream6", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream7", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream8", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream9", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream10", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream11", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream12", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream13", dominant: "Indica", CurrentTime: "Week 9"},
-          // {name: "Blue Berry Cream14", dominant: "Indica", CurrentTime: "Week 9"},
+
 
         ]
       }
@@ -107,6 +91,18 @@
       //   })
       // }
   
+    },
+    methods:{
+      refresh(param){
+        if (db.valid("plantsDB", location)) {
+          // Get all plants from database
+          db.getAll("plantsDB", location, (succ, data) => {
+            // Load all datas
+            this.MyPlantsDB = data
+            console.log("Plants Data Loaded From DB!"); 
+          })
+        }        
+      }
     }
   }
   

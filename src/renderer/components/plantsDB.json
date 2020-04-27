@@ -1,22 +1,12 @@
 {
   "plantsDB": [
     {
-      "Pname": "OG kush",
+      "Pname": "White Widow",
       "dominant": "Hybrid",
-      "CurrWeek": "Week 7",
-      "id": 1576795879359
-    },
-    {
-      "Pname": "Blue Berry Cream1",
-      "dominant": "Hybrid",
-      "CurrWeek": "Week 7",
-      "id": 1576795886743
-    },
-    {
-      "Pname": "Blue Berry Cream2",
-      "dominant": "Hybrid",
-      "CurrWeek": "Week 7",
-      "id": 1576795931856
+      "SeedCost": "10",
+      "GermDate": "2020-02-10",
+      "NumberOfPlants": "1",
+      "id": 1588026616174
     }
   ]
 }
