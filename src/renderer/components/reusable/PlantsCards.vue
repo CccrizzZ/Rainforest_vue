@@ -9,46 +9,68 @@
 
       <!-- Dominant -->
       <b-card-text>Strain Dominant: {{plant.dominant}}</b-card-text>
-      <!-- Seed Cost -->
+      <!-- Plant gender -->
+      <b-card-text>Plant Seed Type: {{plant.PlantSeedType}}</b-card-text>
+      <!-- Seed cost -->
       <b-card-text>Seed Cost: ${{plant.SeedCost}}</b-card-text>
       <!-- Dominant -->
       <b-card-text>Amount of Plants: {{plant.NumberOfPlants}}</b-card-text>
       <!-- Germ date -->
       <b-card-text>Germination Date: {{plant.GermDate}}</b-card-text>
-      <!-- Current Week -->
-      <em>Current Week: {{plant.CurrWeek}}</em>
+      <!-- Current week -->
+      <em>Current Week: {{plant.CurrentWeek}}</em>
 
-      <b-card-header id="accord1" header-tag="header" class="p-1" role="tab">
-        <b-button block href="#" v-b-toggle="CastIdToString(plant.id)" variant="primary">Progress</b-button>
-      </b-card-header>
-      
-      <b-collapse v-bind:id="CastIdToString(plant.id)" role="tabpanel"  variant="dark">
-        <b-card bg-variant="dark">
-          <b-card-text>Progress</b-card-text>
-        </b-card>
-      </b-collapse>
+      <b-card bg-variant="dark" style="margin-top:30px; border-radius:2em">
+        <div id="red"></div>
+      </b-card>
 
       <!-- Edit Button -->
-      <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal="plant.id">Edit</b-button>
+      <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal="plant.id" >Edit</b-button>
     </b-card>
     </div>
   </b-card-group>
 </template>
 
 <script>
-  export default {
+  import { Chart } from 'frappe-charts';
 
+  export default {
     name: "plantsCard",
     props: ['plants'],
+    data() {
+      return {
+        plantID: '',
+        chartData : {
+            dataPoints: {
+                "1426744959": 20,
+                "1463673055": 113,
+                "1476892421": 57,
+            },
+            start: null, // a JS date object
+            end: null
+        }
+
+      }
+    },
+    mounted() {
+        setTimeout(() => {
+          let chart = new Chart("#red", {
+            type: 'heatmap',
+            data: this.chartData,
+          })
+        }, 200);
+    },
     methods: {
+      CreateHeatMap(id){
+        
+
+      },
       CastIdToString(obj) {
         return String(obj)
       }
-
     }
-    
-
   }
+
 </script>
 
 <style>

@@ -30,10 +30,19 @@
 
             <!-- Dominant radio -->
             <b-form-group label="Select plant dominant:">
-              <b-form-radio-group name="radio-inline">
+              <b-form-radio-group name="radio-dominant">
                 <b-form-radio  size="lg" v-model="NewPlantForm.PlantDominant" name="Indica-radio" value="Indica">Indica</b-form-radio>
                 <b-form-radio size="lg" v-model="NewPlantForm.PlantDominant" name="Sativa-radio" value="Sativa">Sativa</b-form-radio>
                 <b-form-radio size="lg" v-model="NewPlantForm.PlantDominant" name="Hybrid-radio" value="Hybrid">Hybrid</b-form-radio>
+              </b-form-radio-group>
+            </b-form-group>
+
+            <!-- Seed type radio -->
+            <b-form-group label="Select seed type:">
+              <b-form-radio-group name="radio-seed">
+                <b-form-radio  size="lg" v-model="NewPlantForm.PlantSeedType" name="Feminized-radio" value="Feminized">Feminized</b-form-radio>
+                <b-form-radio size="lg" v-model="NewPlantForm.PlantSeedType" name="Autoflower-radio" value="Autoflower">Autoflower</b-form-radio>
+                <b-form-radio size="lg" v-model="NewPlantForm.PlantSeedType" name="CBD-radio" value="CBD">CBD</b-form-radio>
               </b-form-radio-group>
             </b-form-group>
           
@@ -94,9 +103,10 @@
           PlantName: '',
           PlantDominant: '',
           PlantGermDate: '',
-          PlantGender:'',
+          PlantSeedType:'',
           PlantSeedPrice: null,
-          PlantAmount: null
+          PlantAmount: null,
+          CurrentWeek: null
         }
       }
     },
@@ -125,7 +135,22 @@
           obj.SeedCost = this.NewPlantForm.PlantSeedPrice
           obj.GermDate = this.NewPlantForm.PlantGermDate
           obj.NumberOfPlants = this.NewPlantForm.PlantAmount
+          obj.PlantSeedType = this.NewPlantForm.PlantSeedType
 
+          // calculate dates
+          let temp = [
+            obj.GermDate[0]+obj.GermDate[1]+obj.GermDate[2]+obj.GermDate[3],
+            obj.GermDate[5]+obj.GermDate[6],
+            obj.GermDate[8]+obj.GermDate[9],
+          ]
+
+          console.log(temp);
+          
+
+          obj.CurrentWeek = moment(temp,"YYYYMMDD",'dd').toNow()
+
+          console.log(obj.CurrentWeek);
+          
           // insert it into table (plantsDB)
           db.insertTableContent("plantsDB", location, obj, (succ, msg) => {
               console.log("Insertion Success: " + succ)
@@ -141,7 +166,10 @@
         this.NewPlantForm.PlantName = ''
         this.NewPlantForm.PlantDominant = ''
         this.NewPlantForm.PlantGermDate = null
-        this.NewPlantForm.PlantGender = ''
+        this.NewPlantForm.PlantSeedType = ''
+        this.NewPlantForm.PlantSeedPrice = null,
+        this.NewPlantForm.PlantAmount = null
+
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {

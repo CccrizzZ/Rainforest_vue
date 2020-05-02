@@ -1,12 +1,34 @@
 {
   "plantsDB": [
     {
-      "Pname": "White Widow",
-      "dominant": "Hybrid",
-      "SeedCost": "10",
+      "Pname": "Blue Cheese",
+      "dominant": "Indica",
+      "SeedCost": "4",
       "GermDate": "2020-02-10",
+      "NumberOfPlants": "2",
+      "PlantSeedType": "Feminized",
+      "CurrentWeek": "in 3 months",
+      "id": 1588323187874
+    },
+    {
+      "Pname": "OG Gasolina",
+      "dominant": "Indica",
+      "SeedCost": "1",
+      "GermDate": "2020-05-12",
+      "NumberOfPlants": "2",
+      "PlantSeedType": "Feminized",
+      "CurrentWeek": "10 days ago",
+      "id": 1588390480302
+    },
+    {
+      "Pname": "1",
+      "dominant": "Indica",
+      "SeedCost": "1",
+      "GermDate": "2020-05-25",
       "NumberOfPlants": "1",
-      "id": 1588026616174
+      "PlantSeedType": "Feminized",
+      "CurrentWeek": "23 days ago",
+      "id": 1588390526088
     }
   ]
 }
