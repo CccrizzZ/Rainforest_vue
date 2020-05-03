@@ -20,8 +20,14 @@
       <!-- Current week -->
       <em>Current Week: {{plant.CurrentWeek}}</em>
 
-      <b-card bg-variant="dark" style="margin-top:30px; border-radius:2em">
-        <div id="red"></div>
+      <b-card bg-variant="dark" style="margin-top:30px; border-radius:2em; padding-top: 10px; align-items:center;">
+        <v-calendar
+          :id="plant.id"    
+          :columns="2" 
+          :value="null"
+          :color="plant.dominant=='Indica'?'purple':'green'"
+          is-dark
+        />
       </b-card>
 
       <!-- Edit Button -->
@@ -32,45 +38,53 @@
 </template>
 
 <script>
-  import { Chart } from 'frappe-charts';
+  import { CalendarHeatmap } from 'vue-calendar-heatmap'
+  import { format } from 'url'
+
 
   export default {
     name: "plantsCard",
     props: ['plants'],
+    components:{
+      CalendarHeatmap
+    },
     data() {
       return {
-        plantID: '',
-        chartData : {
-            dataPoints: {
-                "1426744959": 20,
-                "1463673055": 113,
-                "1476892421": 57,
-            },
-            start: null, // a JS date object
-            end: null
-        }
+        plist:this.plants,
+        range: {
 
+        }
       }
     },
     mounted() {
-        setTimeout(() => {
-          let chart = new Chart("#red", {
-            type: 'heatmap',
-            data: this.chartData,
-          })
-        }, 200);
+
+      
     },
     methods: {
-      CreateHeatMap(id){
-        
-
-      },
       CastIdToString(obj) {
         return String(obj)
+      },
+      calcDate(plant){
+        let d = new Date();
+        let temp = {
+          start: plant.GermDate,
+          end: this.DateConvert(d)
+        }
+        this.range = temp
+      },
+      DateConvert(date){
+        var yyyy = date.getFullYear().toString();
+        var mm = (date.getMonth()+1).toString();
+        var dd  = date.getDate().toString();
+
+        var mmChars = mm.split('');
+        var ddChars = dd.split('');
+
+        return yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+
       }
     }
   }
-
 </script>
 
 <style>
@@ -81,7 +95,7 @@
   
   #PCards{
     color:#ffffff; 
-    background-color:#606060; 
+    background-color:#282C34; 
     border-radius:2em; 
     margin-bottom: 20px;
   }
