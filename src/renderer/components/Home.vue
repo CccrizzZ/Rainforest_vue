@@ -14,6 +14,8 @@
 
 <script>
 
+
+    import {Color, Titlebar} from 'custom-electron-titlebar'
     // path to database file
     import path from 'path'
     const location = path.join(__dirname, '')
@@ -25,6 +27,16 @@
     import { setInterval } from 'timers'
     import plantsGrid  from './reusable/PlantsGrid'
     import { log } from 'util'
+
+    
+
+    new Titlebar({
+        titleHorizontalAlignment: 'center',
+        backgroundColor: Color.fromHex('#333333')
+    }).updateTitle("Rainforest")
+
+    
+
 
     export default {
 

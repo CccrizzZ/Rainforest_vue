@@ -1,24 +1,32 @@
 <template>
     <div>
         <b-navbar variant="dark" type="dark" class="navbar1">
-            <b-navbar-brand tag="h1">Rainforest</b-navbar-brand>
 
             <!-- tooltip & button for show time -->
-            <b-button
-                pill
-                v-b-toggle.collapse-time
-                variant="primary"
-                style="margin-right: 10px;"
-                class="ml-auto"
-                id="ShowTime"
-            >Show Time</b-button>
+            <b-navbar-brand>
+                <b-button
+                    pill
+                    v-b-toggle.collapse-time
+                    variant="primary"
+                    style="margin-right: 10px;"
+                    class="ml-auto"
+                    id="ShowTime"
+                >Show Time</b-button>    
+            </b-navbar-brand>
             <b-tooltip target="ShowTime" triggers="hover">
                 Toggle
                 <b>current time</b> bar
             </b-tooltip>
 
             <!-- tooltip & button for add new plant -->
-            <b-button pill v-b-modal.modal-xl-addplant variant="success" id="AddNewPlant">Add New Plant</b-button>
+            <b-navbar-nav class="ml-auto">
+                <b-button 
+                    pill 
+                    v-b-modal.modal-xl-addplant 
+                    variant="success" 
+                    id="AddNewPlant"
+                >Add New Plant</b-button>
+            </b-navbar-nav>
             <b-tooltip target="AddNewPlant" triggers="hover">
                 Add a
                 <b>new plant</b> to the tray
@@ -276,4 +284,5 @@
     #modal-xl-addplant___BV_modal_content_ {
         border-radius: 2em;
     }
+
 </style>

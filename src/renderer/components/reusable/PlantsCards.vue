@@ -1,26 +1,43 @@
 <template>
     <div style="width:100%;">
         <b-card
-        id="PCards"
-        header-tag="header"
-        footer-tag="footer"
-        v-for="plant in plants"
-        v-bind:data="plant"
-        v-bind:key="plant.name"
+            id="PCards"
+            header-tag="header"
+            footer-tag="footer"
+            v-for="plant in plants"
+            v-bind:data="plant"
+            v-bind:key="plant.name"
         >
             <!-- Card Title -->
             <h2 slot="header" class="mb-0">{{plant.Pname}}</h2>
 
-            <!-- Dominant -->
-            <b-card-text>Strain Dominant: {{plant.dominant}}</b-card-text>
-            <!-- Plant gender -->
-            <b-card-text>Plant Seed Type: {{plant.PlantSeedType}}</b-card-text>
-            <!-- Seed cost -->
-            <b-card-text>Seed Cost: ${{plant.SeedCost}}</b-card-text>
-            <!-- Dominant -->
-            <b-card-text>Amount of Plants: {{plant.NumberOfPlants}}</b-card-text>
-            <!-- Germ date -->
-            <b-card-text>Germination Date: {{plant.GermDate}}</b-card-text>
+            <b-list-group>
+                <!-- Dominant -->
+                <b-list-group-item class="d-flex justify-content-between align-items-center" id="litem">
+                    Strain Dominant: 
+                    <b-badge variant="secondary"  pill>{{plant.dominant}}</b-badge>
+                </b-list-group-item>
+                <!-- Plant gender -->
+                <b-list-group-item class="d-flex justify-content-between align-items-center" id="litem">
+                    Plant Seed Type: 
+                    <b-badge variant="secondary" pill>{{plant.PlantSeedType}}</b-badge>
+                </b-list-group-item>
+                <!-- Seed cost -->
+                <b-list-group-item class="d-flex justify-content-between align-items-center" id="litem"> 
+                    Seed Cost: 
+                    <b-badge variant="secondary" pill>${{plant.SeedCost}}</b-badge>
+                </b-list-group-item>
+                <!-- Amount -->
+                <b-list-group-item class="d-flex justify-content-between align-items-center" id="litem">
+                    Amount of Plants:
+                    <b-badge variant="secondary" pill>{{plant.NumberOfPlants}}</b-badge>
+                </b-list-group-item>
+                <!-- Germ date -->
+                <b-list-group-item class="d-flex justify-content-between align-items-center" id="litem">
+                    Germination Date:
+                    <b-badge variant="secondary" pill>{{plant.GermDate}}</b-badge>
+                </b-list-group-item>
+            </b-list-group>
 
             <b-card
                 bg-variant="dark"
@@ -90,5 +107,9 @@
         background-color: #282c34;
         border-radius: 2em;
         margin-bottom: 20px;
+    }
+    #litem{
+        background-color: #383d45;
+        font-size: 16px;
     }
 </style>
