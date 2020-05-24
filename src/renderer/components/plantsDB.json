@@ -8,6 +8,15 @@
       "NumberOfPlants": "1",
       "PlantSeedType": "Feminized",
       "id": 1590291634975
+    },
+    {
+      "Pname": "Cheese",
+      "dominant": "Indica",
+      "SeedCost": "10",
+      "GermDate": "2020-02-10",
+      "NumberOfPlants": "2",
+      "PlantSeedType": "Feminized",
+      "id": 1590292813134
     }
   ]
 }
