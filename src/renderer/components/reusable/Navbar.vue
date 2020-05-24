@@ -47,40 +47,40 @@
                     <b-form @submit="onSubmit(); RefreshCards(); makeToast('warning')" @reset="onReset()">
                         <!-- Plant name -->
                         <b-form-group
-                        label="Plant name:"
-                        label-for="input-1"
-                        description="Enter your plant name here."
+                            label="Plant name:"
+                            label-for="input-1"
+                            description="Enter your plant name here."
                         >
-                        <b-form-input
-                            id="input-1"
-                            v-model="NewPlantForm.PlantName"
-                            required
-                            placeholder="Enter plant name"
-                        ></b-form-input>
+                            <b-form-input
+                                id="input-1"
+                                v-model="NewPlantForm.PlantName"
+                                required
+                                placeholder="Enter plant name"
+                            ></b-form-input>
                         </b-form-group>
 
                         <!-- Dominant radio -->
                         <b-form-group label="Select plant dominant:">
                             <b-form-radio-group name="radio-dominant">
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantDominant"
-                                name="Indica-radio"
-                                value="Indica"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantDominant"
+                                    name="Indica-radio"
+                                    value="Indica"
                                 >Indica</b-form-radio>
                                 
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantDominant"
-                                name="Sativa-radio"
-                                value="Sativa"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantDominant"
+                                    name="Sativa-radio"
+                                    value="Sativa"
                                 >Sativa</b-form-radio>
                                 
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantDominant"
-                                name="Hybrid-radio"
-                                value="Hybrid"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantDominant"
+                                    name="Hybrid-radio"
+                                    value="Hybrid"
                                 >Hybrid</b-form-radio>
                             </b-form-radio-group>
                         </b-form-group>
@@ -89,33 +89,33 @@
                         <b-form-group label="Select seed type:">
                             <b-form-radio-group name="radio-seed">
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantSeedType"
-                                name="Feminized-radio"
-                                value="Feminized"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantSeedType"
+                                    name="Feminized-radio"
+                                    value="Feminized"
                                 >Feminized</b-form-radio>
 
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantSeedType"
-                                name="Autoflower-radio"
-                                value="Autoflower"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantSeedType"
+                                    name="Autoflower-radio"
+                                    value="Autoflower"
                                 >Autoflower</b-form-radio>
 
                                 <b-form-radio
-                                size="lg"
-                                v-model="NewPlantForm.PlantSeedType"
-                                name="CBD-radio"
-                                value="CBD"
+                                    size="lg"
+                                    v-model="NewPlantForm.PlantSeedType"
+                                    name="CBD-radio"
+                                    value="CBD"
                                 >CBD</b-form-radio>
                             </b-form-radio-group>
                         </b-form-group>
 
                         <!-- Seed price -->
                         <b-form-group
-                        label="Enter seed price:"
-                        label-for="input-2"
-                        description="Enter your seed price here."
+                            label="Enter seed price:"
+                            label-for="input-2"
+                            description="Enter your seed price here."
                         >
                             <b-form-input
                                 type="number"
@@ -129,9 +129,9 @@
 
                         <!-- Amount -->
                         <b-form-group
-                        label="Enter plant amount:"
-                        label-for="input-3"
-                        description="Enter your plant amount here."
+                            label="Enter plant amount:"
+                            label-for="input-3"
+                            description="Enter your plant amount here."
                         >
                             <b-form-input
                                 type="number"

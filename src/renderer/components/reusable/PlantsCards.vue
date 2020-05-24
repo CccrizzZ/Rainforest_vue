@@ -40,11 +40,11 @@
             </b-list-group>
 
             <b-card
-                bg-variant="dark"
+                bg-variant="primary"
                 style="margin-top:30px; border-radius:2em; padding-top: 10px; align-items:center;"
             >
                 <!-- Current week -->
-                <em>Week {{plant.CurrentWeek}}</em>
+                <h4>Week {{calcWeek(plant)}} Day {{calcDate(plant)}}</h4>
         
             </b-card>
 
@@ -55,8 +55,8 @@
 </template>
 
 <script>
-    import { format } from "url";
-
+    import { format } from "url"
+    import moment from "moment"
     export default {
         name: "plantsCards",
         props: ["plants"],
@@ -64,7 +64,7 @@
         data() {
             return {
                 plist: this.plants,
-                range: {}
+                range: 0
             }
         },
         mounted() {},
@@ -73,14 +73,26 @@
             CastIdToString(obj) {
                 return String(obj)
             },
+            // calculate date difference
             calcDate(plant) {
-                let d = new Date()
-                let temp = {
-                    start: plant.GermDate,
-                    end: this.DateConvert(d)
-                };
-                this.range = temp;
+                let a = moment(plant.GermDate)
+                let b = moment()
+
+                let temp = -a.diff(b, 'days', true)
+                // this.range = temp;
+                
+                return Math.floor(temp%7)
             },
+            // calculate week difference
+            calcWeek(plant) {
+                let a = moment(plant.GermDate)
+                let b = moment()
+
+                let temp = -a.diff(b, 'days', true)
+                return Math.floor(temp/7)
+                
+            },
+
             DateConvert(date) {
                 var yyyy = date.getFullYear().toString();
                 var mm = (date.getMonth() + 1).toString();

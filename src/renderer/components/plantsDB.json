@@ -1,58 +1,13 @@
 {
   "plantsDB": [
     {
-      "Pname": "BlueCheese",
-      "dominant": "Indica",
-      "SeedCost": "10",
-      "GermDate": "2020-02-10",
-      "NumberOfPlants": "2",
-      "PlantSeedType": "Feminized",
-      "id": 1590191566201
-    },
-    {
-      "Pname": "GreenDragon",
-      "dominant": "Sativa",
-      "SeedCost": "1",
-      "GermDate": "2020-05-04",
-      "NumberOfPlants": "1",
-      "PlantSeedType": "Feminized",
-      "id": 1590191758958
-    },
-    {
-      "Pname": "LSD",
-      "dominant": "Sativa",
-      "SeedCost": "1",
+      "Pname": "OG",
+      "dominant": "Hybrid",
+      "SeedCost": "100",
       "GermDate": "2020-05-01",
       "NumberOfPlants": "1",
       "PlantSeedType": "Feminized",
-      "id": 1590191789496
-    },
-    {
-      "Pname": "U2",
-      "dominant": "Hybrid",
-      "SeedCost": "1",
-      "GermDate": "2020-05-18",
-      "NumberOfPlants": "1",
-      "PlantSeedType": "Autoflower",
-      "id": 1590191820297
-    },
-    {
-      "Pname": "Hemp",
-      "dominant": "Hybrid",
-      "SeedCost": "1",
-      "GermDate": "2020-05-07",
-      "NumberOfPlants": "1",
-      "PlantSeedType": "CBD",
-      "id": 1590191842152
-    },
-    {
-      "Pname": "IDK",
-      "dominant": "Indica",
-      "SeedCost": "1",
-      "GermDate": "2020-05-15",
-      "NumberOfPlants": "1",
-      "PlantSeedType": "Feminized",
-      "id": 1590215154192
+      "id": 1590291634975
     }
   ]
 }
