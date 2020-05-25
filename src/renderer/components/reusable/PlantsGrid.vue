@@ -1,6 +1,6 @@
 <template>
     <b-card-group id="CardGroup">
-        <plantsCards v-bind:plants="MyPlantsDB" />
+        <plantsCards v-bind:plants="MyPlantsDB" v-on:ReloadDB = "ReloadDB"/>
     </b-card-group>
 </template>
 
@@ -62,7 +62,9 @@
             }
         },
         methods:{
-
+            ReloadDB(){
+                this.$emit("refresh");
+            }
         }
     }
 </script>

@@ -6,7 +6,7 @@
             
             <div style="padding-top:10px; margin-bottom:10px;"></div>
             <hr>
-            <plantsGrid ref="Pgrid"/>
+            <plantsGrid ref="Pgrid" v-on:refresh = "refresh"/>
 
         </div>
     </div>
@@ -19,13 +19,15 @@
     // path to database file
     import path from 'path'
     const location = path.join(__dirname, '')
-    import  navbars  from './reusable/Navbar'
+    
     // moment.js
     import moment from 'moment'
+
     // electron db
     import db from 'electron-db'
+    import navbars from './reusable/Navbar'
+    import plantsGrid from './reusable/PlantsGrid'
     import { setInterval } from 'timers'
-    import plantsGrid  from './reusable/PlantsGrid'
     import { log } from 'util'
 
     
@@ -66,7 +68,7 @@
                     db.getAll("plantsDB", location, (succ, data) => {
                         // Load all datas
                         this.$refs.Pgrid.MyPlantsDB = data
-                        console.log("Plants Data Loaded From DB!"); 
+                        console.log("Plants Data Refreshed!"); 
                     })
                     
                 }

@@ -49,26 +49,173 @@
             </b-card>
 
             <!-- Edit Button -->
-            <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal="plant.id">Edit</b-button>
+            <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal='CastIdToString(plant.id)' @click='setPlant(plant)'>Edit</b-button>
+            
+            <!-- add new plant modal -->
+            <b-modal
+                :id='CastIdToString(plant.id)'
+                ref="my-modal"
+                header-bg-variant="primary"
+                no-close-on-backdrop
+                centered
+                scrollable
+                hide-footer
+                no-close-on-esc
+                hide-header-close
+                title=" 🎍 New Plant"
+            >
+                <div>
+                    <b-form @submit="submitChanges(plant);$bvModal.hide(CastIdToString(plant.id));">
+                        <!-- Plant name -->
+                        <b-form-group
+                            label="Plant name:"
+                            label-for="input-1"
+                            description="Enter your plant name here."
+                            v-model="plant.Pname"
+                        >
+                            <b-form-input
+                                id="input-1"
+                                v-model="plant.Pname"
+                                required
+                                placeholder="Enter plant name"
+                            ></b-form-input>
+                        </b-form-group>
+
+                        <!-- Dominant radio -->
+                        <b-form-group label="Select plant dominant:">
+                            <b-form-radio-group v-model="plant.dominant" name="radio-dominant">
+        
+                                <b-form-radio
+                                    size="lg"
+                                    name="Indica-radio"
+                                    value="Indica"
+                                >Indica</b-form-radio>
+                                
+                                <b-form-radio
+                                    size="lg"
+                                    name="Sativa-radio"
+                                    value="Sativa"
+                                >Sativa</b-form-radio>
+                                
+                                <b-form-radio
+                                    size="lg"
+                                    name="Hybrid-radio"
+                                    value="Hybrid"
+                                >Hybrid</b-form-radio>
+                            </b-form-radio-group>
+                        </b-form-group>
+
+                        <!-- Seed type radio -->
+                        <b-form-group label="Select seed type:">
+                            <b-form-radio-group v-model="plant.PlantSeedType" name="radio-seed">
+                                <b-form-radio
+                                    size="lg"
+                                    name="Feminized-radio"
+                                    value="Feminized"
+                                >Feminized</b-form-radio>
+
+                                <b-form-radio
+                                    size="lg"
+                                    name="Autoflower-radio"
+                                    value="Autoflower"
+                                >Autoflower</b-form-radio>
+
+                                <b-form-radio
+                                    size="lg"
+                                    name="CBD-radio"
+                                    value="CBD"
+                                >CBD</b-form-radio>
+                            </b-form-radio-group>
+                        </b-form-group>
+
+                        <!-- Seed price -->
+                        <b-form-group
+                            label="Enter seed price:"
+                            label-for="input-2"
+                            description="Enter your seed price here."
+                        >
+                            <b-form-input
+                                type="number"
+                                required
+                                id="input-2"
+                                v-model="plant.SeedCost"
+                                placeholder="Enter seed price"
+                            ></b-form-input>
+
+                        </b-form-group>
+
+                        <!-- Amount -->
+                        <b-form-group
+                            label="Enter plant amount:"
+                            label-for="input-3"
+                            description="Enter your plant amount here."
+                        >
+                            <b-form-input
+                                type="number"
+                                required
+                                id="input-3"
+                                v-model="plant.NumberOfPlants"
+                                placeholder="Enter plant amount"
+                            ></b-form-input>
+
+                        </b-form-group>
+
+                        <!-- Plant date -->
+                        <div>
+                            <label for="datepicker-full-width">Set germination date:</label>
+                            <b-form-datepicker v-model="plant.GermDate"></b-form-datepicker>
+                        </div>
+
+                        <hr />
+
+                        <b-button pill @click="$bvModal.hide(CastIdToString(plant.id)); resetForm()" variant="dark">Cancel</b-button>
+                        <b-button pill type="submit" variant="success">Submit</b-button>
+                    </b-form>
+                </div>
+            </b-modal>
         </b-card>
     </div>
 </template>
 
 <script>
     import { format } from "url"
+    // moment js
     import moment from "moment"
+    // electron db
+    import db from "electron-db";
+
+
     export default {
         name: "plantsCards",
         props: ["plants"],
         components: {},
         data() {
             return {
-                plist: this.plants,
-                range: 0
+                
+                // new plant form obj
+                NewPlantForm: {
+                    PlantName: "",
+                    PlantDominant: "",
+                    PlantGermDate: "",
+                    PlantSeedType: "",
+                    PlantSeedPrice: null,
+                    PlantAmount: null,
+                    CurrentWeek: null
+                }
             }
         },
         mounted() {},
         methods: {
+            resetForm(){
+                
+                this.$emit("ReloadDB");
+                
+            },
+            setPlant(plant){
+                console.log(plant);
+                
+
+            },
             // cast numbers to string
             CastIdToString(obj) {
                 return String(obj)
@@ -79,7 +226,6 @@
                 let b = moment()
 
                 let temp = -a.diff(b, 'days', true)
-                // this.range = temp;
                 
                 return Math.floor(temp%7)
             },
@@ -90,25 +236,27 @@
 
                 let temp = -a.diff(b, 'days', true)
                 return Math.floor(temp/7)
+            },
+            // submit changes to db
+            submitChanges(plant){
+                console.log(plant)
+
+
+
+
+
+
+                this.$emit("ReloadDB");
+
+                this.$bvToast.toast("Edited 1 existing plant", {
+                    title: "Plant saved!",
+                    toaster: "b-toaster-bottom-left",
+                    variant: "success",
+                    solid: true,
+                    autoHideDelay: 2000
+                })
                 
             },
-
-            DateConvert(date) {
-                var yyyy = date.getFullYear().toString();
-                var mm = (date.getMonth() + 1).toString();
-                var dd = date.getDate().toString();
-
-                var mmChars = mm.split("");
-                var ddChars = dd.split("");
-
-                return (
-                    yyyy +
-                    "-" +
-                    (mmChars[1] ? mm : "0" + mmChars[0]) +
-                    "-" +
-                    (ddChars[1] ? dd : "0" + ddChars[0])
-                );
-            }
         }
     }
 </script>

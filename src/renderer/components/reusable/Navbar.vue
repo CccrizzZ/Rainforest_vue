@@ -36,6 +36,7 @@
             <b-modal
                 id="modal-xl-addplant"
                 ref="modal-xl-addplant"
+                header-bg-variant="success"
                 no-close-on-backdrop
                 centered
                 scrollable
@@ -187,7 +188,7 @@
                 // moment.js time
                 currtime: moment().format("MMMM Do YYYY, h:mm:ss a"),
 
-                // plant form obj
+                // new plant form obj
                 NewPlantForm: {
                     PlantName: "",
                     PlantDominant: "",
@@ -201,7 +202,7 @@
         },
         methods: {
             // Toast for successful insertion
-            makeToast(variant = null) {
+            makeToast() {
                 this.$bvToast.toast("1 New plant added", {
                     title: "New plant created",
                     toaster: "b-toaster-bottom-left",

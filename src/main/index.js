@@ -19,8 +19,8 @@ function createWindow () {
    */
   mainWindow = new BrowserWindow({
     useContentSize: true,
-    height: 700,
-    width: 800,
+    height: 900,
+    width: 1200,
     center: true,
     frame: false,
     icon: __dirname + '../renderer/assets/logo.png'
