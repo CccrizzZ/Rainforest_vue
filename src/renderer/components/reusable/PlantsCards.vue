@@ -49,10 +49,11 @@
             </b-card>
 
             <!-- Edit Button -->
-            <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal='CastIdToString(plant.id)' @click='setPlant(plant)'>Edit</b-button>
+            <b-button pill slot="footer" style="right:0px;" variant="dark" v-b-modal='CastIdToString(plant.id)'>Edit</b-button>
             
-            <!-- add new plant modal -->
+            <!-- edit current plant modal -->
             <b-modal
+                class="editmodal"
                 :id='CastIdToString(plant.id)'
                 ref="my-modal"
                 header-bg-variant="primary"
@@ -141,7 +142,6 @@
                                 v-model="plant.SeedCost"
                                 placeholder="Enter seed price"
                             ></b-form-input>
-
                         </b-form-group>
 
                         <!-- Amount -->
@@ -157,13 +157,12 @@
                                 v-model="plant.NumberOfPlants"
                                 placeholder="Enter plant amount"
                             ></b-form-input>
-
                         </b-form-group>
 
                         <!-- Plant date -->
                         <div>
                             <label for="datepicker-full-width">Set germination date:</label>
-                            <b-form-datepicker v-model="plant.GermDate"></b-form-datepicker>
+                            <b-form-datepicker today-variant="success" selected-variant="success"  v-model="plant.GermDate"></b-form-datepicker>
                         </div>
 
                         <hr />
@@ -207,7 +206,6 @@
         mounted() {},
         methods: {
             resetForm(){
-                
                 this.$emit("ReloadDB");
                 
             },
@@ -271,5 +269,8 @@
     #litem{
         background-color: #383d45;
         font-size: 16px;
+    }
+    .modal-dialog-centered.modal-dialog-scrollable .modal-content{
+        border-radius: 2em;
     }
 </style>

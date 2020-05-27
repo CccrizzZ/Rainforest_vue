@@ -23,7 +23,6 @@ function createWindow () {
     width: 1200,
     center: true,
     frame: false,
-    icon: __dirname + '../renderer/assets/logo.png'
   })
 
   mainWindow.loadURL(winURL)

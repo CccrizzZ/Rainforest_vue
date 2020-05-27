@@ -50,7 +50,7 @@ function startRenderer () {
 
     compiler.hooks.compilation.tap('compilation', compilation => {
       compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('html-webpack-plugin-after-emit', (data, cb) => {
-        hotMiddleware.publish({ action: 'reload' })
+        // hotMiddleware.publish({ action: 'reload' })
         cb()
       })
     })
@@ -84,8 +84,10 @@ function startMain () {
     const compiler = webpack(mainConfig)
 
     compiler.hooks.watchRun.tapAsync('watch-run', (compilation, done) => {
-      logStats('Main', chalk.white.bold('compiling...'))
-      hotMiddleware.publish({ action: 'compiling' })
+      /* Prevent auto reload */
+
+      // logStats('Main', chalk.white.bold('compiling...'))
+      // hotMiddleware.publish({ action: 'compiling' })
       done()
     })
 
@@ -94,19 +96,21 @@ function startMain () {
         console.log(err)
         return
       }
+      
+      /* Prevent auto reload */
 
-      logStats('Main', stats)
+      // logStats('Main', stats)
 
-      if (electronProcess && electronProcess.kill) {
-        manualRestart = true
-        process.kill(electronProcess.pid)
-        electronProcess = null
-        startElectron()
+      // if (electronProcess && electronProcess.kill) {
+      //   manualRestart = true
+      //   process.kill(electronProcess.pid)
+      //   electronProcess = null
+      //   startElectron()
 
-        setTimeout(() => {
-          manualRestart = false
-        }, 5000)
-      }
+      //   setTimeout(() => {
+      //     manualRestart = false
+      //   }, 5000)
+      // }
 
       resolve()
     })

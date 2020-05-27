@@ -62,15 +62,15 @@
         
         },
         methods:{
+            // reload the plants from db
             refresh(){
                 if (db.valid("plantsDB", location)) {
                     // Get all plants from database
                     db.getAll("plantsDB", location, (succ, data) => {
                         // Load all datas
                         this.$refs.Pgrid.MyPlantsDB = data
-                        console.log("Plants Data Refreshed!"); 
+                        // console.log("Plants Data Refreshed!"); 
                     })
-                    
                 }
             }
         }
@@ -80,16 +80,7 @@
 </script>
 
 <style>
-#homebg {
-    height: 100%
-}
-
-
-
-
-
-
-
-
-
+    #homebg {
+        height: 100%
+    }
 </style>

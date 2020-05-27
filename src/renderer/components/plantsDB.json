@@ -17,6 +17,15 @@
       "NumberOfPlants": "2",
       "PlantSeedType": "Feminized",
       "id": 1590292813134
+    },
+    {
+      "Pname": "Glue",
+      "dominant": "Indica",
+      "SeedCost": "0",
+      "GermDate": "2020-02-10",
+      "NumberOfPlants": "3",
+      "PlantSeedType": "Feminized",
+      "id": 1590532066460
     }
   ]
 }

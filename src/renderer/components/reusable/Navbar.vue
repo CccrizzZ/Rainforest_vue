@@ -45,7 +45,7 @@
                 title=" 🎍 New Plant"
             >
                 <div>
-                    <b-form @submit="onSubmit(); RefreshCards(); makeToast('warning')" @reset="onReset()">
+                    <b-form @submit="onSubmit(); RefreshCards(); makeToast('primary')" @reset="onReset()">
                         <!-- Plant name -->
                         <b-form-group
                             label="Plant name:"
@@ -61,8 +61,8 @@
                         </b-form-group>
 
                         <!-- Dominant radio -->
-                        <b-form-group label="Select plant dominant:">
-                            <b-form-radio-group name="radio-dominant">
+                        <b-form-group label="Select plant dominant:" >
+                            <b-form-radio-group name="radio-dominant" required>
                                 <b-form-radio
                                     size="lg"
                                     v-model="NewPlantForm.PlantDominant"
@@ -88,7 +88,7 @@
 
                         <!-- Seed type radio -->
                         <b-form-group label="Select seed type:">
-                            <b-form-radio-group name="radio-seed">
+                            <b-form-radio-group name="radio-seed" required>
                                 <b-form-radio
                                     size="lg"
                                     v-model="NewPlantForm.PlantSeedType"
@@ -145,11 +145,10 @@
                         </b-form-group>
 
                         <!-- Plant date -->
-                        <div>
+                  
                             <label for="datepicker-full-width">Set germination date:</label>
-                            <b-form-datepicker v-model="NewPlantForm.PlantGermDate"></b-form-datepicker>
-                        </div>
-
+                            <b-datepicker required today-variant="success" selected-variant="success" v-model="NewPlantForm.PlantGermDate"></b-datepicker>
+             
                         <hr />
 
                         <b-button pill type="reset" variant="dark">Reset</b-button>
