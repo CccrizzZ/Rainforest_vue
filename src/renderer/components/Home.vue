@@ -18,7 +18,7 @@
     import {Color, Titlebar} from 'custom-electron-titlebar'
     // path to database file
     import path from 'path'
-    const location = path.join(__dirname, '')
+    const location = path.join(__dirname, './')
     
     // moment.js
     import moment from 'moment'

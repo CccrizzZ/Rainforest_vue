@@ -26,6 +26,24 @@
       "NumberOfPlants": "3",
       "PlantSeedType": "Feminized",
       "id": 1590532066460
+    },
+    {
+      "Pname": "麦旋风 OG",
+      "dominant": "Indica",
+      "SeedCost": "10",
+      "GermDate": "2020-08-11",
+      "NumberOfPlants": "10",
+      "PlantSeedType": "Feminized",
+      "id": 1597148635709
+    },
+    {
+      "Pname": "The Best",
+      "dominant": "Indica",
+      "SeedCost": "2",
+      "GermDate": "2020-08-04",
+      "NumberOfPlants": "4",
+      "PlantSeedType": "Feminized",
+      "id": 1597148724068
     }
   ]
 }
